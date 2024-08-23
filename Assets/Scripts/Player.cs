@@ -1,16 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//https://www.youtube.com/watch?v=hlO0XlqZFBo
 public class Player : MonoBehaviour
 {
     private float moveSpeed = 5f;
     private float rotationSpeed = 720f;
     private Transform cameraTransform;
+    private Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
         cameraTransform = Camera.main.transform;
+        animator=GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -36,13 +39,13 @@ public class Player : MonoBehaviour
 
         // Combine the movement input with the camera's orientation
         Vector3 moveDirection = (forward * moveZ + right * moveX).normalized;
-
+        var velocity=moveDirection*moveSpeed;
+        animator.SetFloat("moveSpeed",velocity.magnitude);
         // If there's movement input, move and rotate the player
         if (moveDirection.magnitude >= 0.1f)
         {
             // Move the player in the direction based on input
-            transform.Translate(moveDirection * moveSpeed * Time.deltaTime, Space.World);
-
+            transform.Translate(velocity * Time.deltaTime, Space.World);
             // Calculate the target rotation based on the movement direction
             Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
 
