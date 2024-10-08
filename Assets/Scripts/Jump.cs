@@ -20,7 +20,6 @@ public class Jump : MonoBehaviour
     {
         if(isGrounded && Input.GetKeyDown(KeyCode.Space)){
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            animator.SetBool("isJump", false);
         }
     }
     private void OnCollisionEnter(Collision collision)
@@ -41,6 +40,7 @@ public class Jump : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = false;
+            animator.SetBool("isJump", true);
         }
     }
 }
