@@ -6,12 +6,16 @@ public class AttackArea : MonoBehaviour
 {
     private int damage = 3;
 
-    private void OnTriggerEnter2D(Collider2D collider)
-    {/**
-        if(collider.GetComponent<Health>() != null)
+
+    // Called when another collider enters this trigger collider
+    private void OnTriggerEnter(Collider collider)
+    {
+        // Check if the collider has a Health component
+        Health health = collider.GetComponent<Health>();
+        if (health != null)
         {
-            Health health = collider.GetComponent<Health>();
+            // Apply damage to the health component
             health.Damage(damage);
-        }**/
+        }
     }
 }

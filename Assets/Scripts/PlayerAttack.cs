@@ -14,34 +14,48 @@ public class PlayerAttack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Ensure the attack area is the correct child object with a Collider attached
         attackArea = transform.GetChild(0).gameObject;
+        
+        // Ensure the attack area has a Collider set as Trigger
+        Collider attackCollider = attackArea.GetComponent<Collider>();
+        if (attackCollider != null)
+        {
+            attackCollider.isTrigger = true;
+        }
+
+        // Set the attack area initially inactive
+        attackArea.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        // Listen for attack input (space key in this example, you can change it)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             Attack();
         }
 
-        if(attacking)
+        // Handle attack duration timer
+        if (attacking)
         {
             timer += Time.deltaTime;
 
-            if(timer >= timeToAttack)
+            if (timer >= timeToAttack)
             {
-                timer = 0;
+                // Reset the timer and stop attacking
+                timer = 0f;
                 attacking = false;
-                attackArea.SetActive(attacking);
+                attackArea.SetActive(false);
             }
-
         }
     }
 
     private void Attack()
     {
         attacking = true;
-        attackArea.SetActive(attacking);
+        attackArea.SetActive(true);
     }
+
 }
