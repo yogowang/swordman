@@ -32,7 +32,7 @@ public class PlayerAttack : MonoBehaviour
     void Update()
     {
         // Listen for attack input (space key in this example, you can change it)
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Attack();
         }
