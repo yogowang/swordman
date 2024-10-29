@@ -291,7 +291,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 10, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -383,8 +383,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.31842804, y: -0.000000028251028, z: 0.000000009489896, w: 0.9479471}
-  m_LocalPosition: {x: 0, y: 3.586, z: -2}
+  m_LocalRotation: {x: 0.318428, y: 0.000000035629604, z: -0.000000011968456, w: 0.9479471}
+  m_LocalPosition: {x: -2.401066e-10, y: 5.1532097, z: -2.0242467}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -614,7 +614,7 @@ Transform:
   m_GameObject: {fileID: 572331450}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.855, z: 0}
+  m_LocalPosition: {x: 0, y: 1.21, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -637,7 +637,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Height: 2
@@ -706,6 +706,7 @@ GameObject:
   - component: {fileID: 686696583}
   - component: {fileID: 686696584}
   - component: {fileID: 686696587}
+  - component: {fileID: 686696588}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -758,13 +759,7 @@ Animator:
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
-  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
-    are already bound by a Humanoid avatar. These transforms can only be changed
-    by Humanoid clips.\n\tTransform 'B-thigh.L'\n\tTransform 'B-forearm.R'\n\tTransform
-    'B-upper_arm.L'\n\tTransform 'B-shoulder.R'\n\tTransform 'B-upperChest'\n\tTransform
-    'B-hand.L'\n\tTransform 'B-shin.R'\n\tTransform 'B-upper_arm.R'\n\tTransform
-    'B-head'\n\tTransform 'B-forearm.L'\n\tand more ...\n\tFrom animation clip 'Stable
-    Sword Inward Slash'"
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
@@ -791,7 +786,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
@@ -806,6 +801,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31a1dc0af32438a4aae58f2661106969, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &686696588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686696580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ab59c186c76d0f40a21932fcd892a50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &688330119 stripped
@@ -1008,7 +1015,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400120, guid: cea7b4908e889df4ea1487e9f97c3c67, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 400120, guid: cea7b4908e889df4ea1487e9f97c3c67, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1056,6 +1063,12 @@ PrefabInstance:
       addedObject: {fileID: 1962990586}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cea7b4908e889df4ea1487e9f97c3c67, type: 3}
+--- !u!4 &1319488739 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: cea7b4908e889df4ea1487e9f97c3c67,
+    type: 3}
+  m_PrefabInstance: {fileID: 899006037}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1322307404 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400120, guid: cea7b4908e889df4ea1487e9f97c3c67,
@@ -1133,7 +1146,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1326868794}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.31842795, y: 0, z: 0, w: 0.9479471}
+  m_LocalRotation: {x: 0.31842795, y: 0.0000000046936393, z: -0.0000000015766555,
+    w: 0.9479471}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1176,8 +1190,8 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 686696582}
-  m_Follow: {fileID: 686696582}
+  m_LookAt: {fileID: 1319488739}
+  m_Follow: {fileID: 1319488739}
   m_CommonLens: 1
   m_Lens:
     FieldOfView: 50
@@ -1272,7 +1286,7 @@ Transform:
   m_GameObject: {fileID: 1447375178}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.586, z: -2}
+  m_LocalPosition: {x: -2.401066e-10, y: 5.1532097, z: -2.0242467}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1606,7 +1620,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1652046158}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.296354, y: 0, z: 0, w: 0.9550782}
+  m_LocalRotation: {x: 0.296354, y: 0.000000004728948, z: -0.0000000014673591, w: 0.9550782}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1691,7 +1705,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2052331578}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.34042534, y: 0, z: 0, w: 0.9402716}
+  m_LocalRotation: {x: 0.34042534, y: 0.0000000046556354, z: -0.0000000016855727,
+    w: 0.9402716}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

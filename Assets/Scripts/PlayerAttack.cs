@@ -7,6 +7,7 @@ public class PlayerAttack : MonoBehaviour
     private GameObject attackArea = default;
 
     private bool attacking = false;
+    private Animator animator;
 
     private float timeToAttack = 0.25f;
     private float timer = 0f;
@@ -14,8 +15,10 @@ public class PlayerAttack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+         // Get the Animator component attached to the player
+        animator = GetComponent<Animator>();
         // Ensure the attack area is the correct child object with a Collider attached
-        attackArea = transform.GetChild(0).gameObject;
+        /*attackArea = transform.GetChild(0).gameObject;
         
         // Ensure the attack area has a Collider set as Trigger
         Collider attackCollider = attackArea.GetComponent<Collider>();
@@ -25,7 +28,7 @@ public class PlayerAttack : MonoBehaviour
         }
 
         // Set the attack area initially inactive
-        attackArea.SetActive(false);
+        attackArea.SetActive(false);*/
     }
 
     // Update is called once per frame
@@ -38,6 +41,7 @@ public class PlayerAttack : MonoBehaviour
         }
 
         // Handle attack duration timer
+        /*
         if (attacking)
         {
             timer += Time.deltaTime;
@@ -49,13 +53,15 @@ public class PlayerAttack : MonoBehaviour
                 attacking = false;
                 attackArea.SetActive(false);
             }
-        }
+        }*/
     }
 
     private void Attack()
     {
         attacking = true;
-        attackArea.SetActive(true);
+        //attackArea.SetActive(true);
+        // Set the "attacking" trigger in the Animator
+        animator.SetTrigger("attacking");
     }
 
 }
