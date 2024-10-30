@@ -34,6 +34,7 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+         animator.SetBool("attacking",false);
         // Listen for attack input (space key in this example, you can change it)
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
@@ -61,7 +62,7 @@ public class PlayerAttack : MonoBehaviour
         attacking = true;
         //attackArea.SetActive(true);
         // Set the "attacking" trigger in the Animator
-        animator.SetTrigger("attacking");
+        animator.SetBool("attacking",true);
     }
 
 }
