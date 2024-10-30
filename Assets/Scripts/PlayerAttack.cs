@@ -38,6 +38,7 @@ public class PlayerAttack : MonoBehaviour
         // Listen for attack input (space key in this example, you can change it)
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+            //animator.applyRootMotion = false;
             Attack();
         }
 
