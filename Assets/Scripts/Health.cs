@@ -4,22 +4,17 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private int health = 100;
+    private int health;
     [SerializeField] private int maxHealth = 100;
-
+    [SerializeField] private HealthBar healthBar;
     // Update is called once per frame
+    void Start(){
+        health=maxHealth;
+        healthBar.updateHealth((float)health/maxHealth);
+    }
     void Update()
     {
-        // For testing purposes, we can damage or heal using key presses
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-           // Damage(10);
-        }
-
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            //Heal(10);
-        }
+       healthBar.updateHealth((float)health/maxHealth);
     }
 
     public void Damage(int amount)
