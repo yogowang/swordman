@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-private GameObject attackArea = default;
+    [SerializeField] private  GameObject attackArea;
     private Animator animator;
 
     private bool isAttacking = false;  // State to prevent multiple attacks during animation
@@ -21,7 +21,6 @@ private GameObject attackArea = default;
         Debug.Log("Attack duration set to: " + timeToAttack);
         // (Optional) Set up the attack area if needed for detecting collisions
         // Uncomment if you have an attack area and need to enable/disable it
-        attackArea = transform.Find("AttackArea").gameObject;
         attackArea.SetActive(false);
     }
 
