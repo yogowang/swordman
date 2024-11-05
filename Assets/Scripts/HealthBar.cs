@@ -7,7 +7,7 @@ using UnityEngine;
 public class HealthBar : MonoBehaviour
 {
      [SerializeField] private Image healthBar;
-     public void updateHealth(float fraction){
+     public void UpdateHealth(float fraction){
         healthBar.fillAmount=fraction;
      }
 }

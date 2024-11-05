@@ -10,11 +10,11 @@ public class Health : MonoBehaviour
     // Update is called once per frame
     void Start(){
         health=maxHealth;
-        healthBar.updateHealth((float)health/maxHealth);
+        healthBar.UpdateHealth((float)health/maxHealth);
     }
     void Update()
     {
-       healthBar.updateHealth((float)health/maxHealth);
+       healthBar.UpdateHealth((float)health/maxHealth);
     }
 
     public void Damage(int amount)
