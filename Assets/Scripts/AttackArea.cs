@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AttackArea : MonoBehaviour
 {
-    [SerializeField] private int damage;
+    private int damage;
 
 
     // Called when another collider enters this trigger collider
@@ -19,5 +19,10 @@ public class AttackArea : MonoBehaviour
             health.Damage(damage);
              Debug.Log("Dummy hit! Health reduced by " + damage);
         }
+    }
+    // Public method to set the damage
+    public void SetDamage(int newDamage)
+    {
+        damage = newDamage;
     }
 }
