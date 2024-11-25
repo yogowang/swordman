@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AttackArea : MonoBehaviour
 {
-    private int damage;
+    private int damage=0;
 
 
     // Called when another collider enters this trigger collider
@@ -17,7 +17,8 @@ public class AttackArea : MonoBehaviour
         {
             // Apply damage to the health component
             health.Damage(damage);
-             Debug.Log("Dummy hit! Health reduced by " + damage);
+            Debug.Log("Dummy hit! Health reduced by " + damage);
+            SetDamage(0);
         }
     }
     // Public method to set the damage
