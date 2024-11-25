@@ -841,6 +841,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   combo:
   - {fileID: 11400000, guid: 3b015dff98faa4b34b177a42765cd256, type: 2}
+  - {fileID: 11400000, guid: 62b20c811b1b64b309f47f4d01ee370c, type: 2}
   attackArea: {fileID: 1026369061}
 --- !u!1 &709359120
 GameObject:
