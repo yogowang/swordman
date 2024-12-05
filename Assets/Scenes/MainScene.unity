@@ -733,6 +733,7 @@ GameObject:
   - component: {fileID: 686696587}
   - component: {fileID: 686696588}
   - component: {fileID: 686696589}
+  - component: {fileID: 686696590}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -784,7 +785,13 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
-  m_WarningMessage: 
+  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
+    are already bound by a Humanoid avatar. These transforms can only be changed
+    by Humanoid clips.\n\tTransform 'B-thigh.L'\n\tTransform 'B-forearm.R'\n\tTransform
+    'B-upper_arm.L'\n\tTransform 'B-shoulder.R'\n\tTransform 'B-f_ring_01.L'\n\tTransform
+    'B-upperChest'\n\tTransform 'B-hand.L'\n\tTransform 'B-f_middle_02.L'\n\tTransform
+    'B-f_pinky_02.L'\n\tTransform 'B-f_index_02.L'\n\tand more ...\n\tFrom animation
+    clip 'Great Sword Blocking'"
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
@@ -858,6 +865,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   healthBar: {fileID: 709359124}
+--- !u!114 &686696590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686696580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b37130f0a040345bc8f308b0504ed527, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  preDefend: {fileID: 11400000, guid: 4732a252a1e074ed88f8ce1829aec99e, type: 2}
+  Defending: {fileID: 11400000, guid: 1d1d3ea11778640959dd25e484a2dfeb, type: 2}
 --- !u!1 &709359120
 GameObject:
   m_ObjectHideFlags: 0

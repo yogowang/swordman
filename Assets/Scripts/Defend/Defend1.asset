@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0320e2e83ec64fbaa9cba580a85e143, type: 3}
   m_Name: Defend1
   m_EditorClassIdentifier: 
-  animatorOV: {fileID: 0}
+  animatorOV: {fileID: 22100000, guid: 6d71b894e9c7a4864b5b4d8023cece50, type: 2}
   _damageReductionRate: 0.5
