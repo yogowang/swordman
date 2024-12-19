@@ -23,6 +23,9 @@ public class Defend : MonoBehaviour
     {
         if (Input.GetButton("Fire2"))  // Check if the right mouse button is pressed down
         {
+            if(isDefend==false){
+                holdingTime=Time.time;
+            }
             DefendAction();
         }
         else{
@@ -30,22 +33,19 @@ public class Defend : MonoBehaviour
         }
     }
     private void DefendAction(){
-    if(isDefend==false){
+    
             isDefend=true;
     animator.runtimeAnimatorController=preDefend.animatorOV;
-    animator.Play("Defend");
-    }
-    if(isDefend==true && animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.9f){ 
-    animator.runtimeAnimatorController=Defending.animatorOV;
-    animator.Play("Defend");
-    }
-        
+    float ratio=(Time.time-holdingTime)/animator.GetCurrentAnimatorClipInfo(0).Length;
+    animator.Play("Defend",0, ratio<1.0f? ratio :1.0f);
+    
     }
     private void FreezeDefend(){
         animator.Play("Defend",0,0.9f*animator.GetCurrentAnimatorClipInfo(0).Length);
     }
     private void EndDefend(){
        isDefend=false;
+       holdingTime=0.0f;
     }
     
 }
