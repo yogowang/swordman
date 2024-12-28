@@ -60,7 +60,7 @@ ModelImporter:
       - time: 0.523416
         functionName: EnableTriggerBox
         data: 
-        objectReferenceParameter: {fileID: 11500000, guid: c1f8d01c4c6d34121989b340b5bdc054,
+        objectReferenceParameter: {fileID: 11500000, guid: 8a3033b0bcf58478eb923e600c8389d9,
           type: 3}
         floatParameter: 0
         intParameter: 0
@@ -68,7 +68,7 @@ ModelImporter:
       - time: 0.6900215
         functionName: DisableTriggerBox
         data: 
-        objectReferenceParameter: {fileID: 11500000, guid: c1f8d01c4c6d34121989b340b5bdc054,
+        objectReferenceParameter: {fileID: 11500000, guid: 8a3033b0bcf58478eb923e600c8389d9,
           type: 3}
         floatParameter: 0
         intParameter: 0

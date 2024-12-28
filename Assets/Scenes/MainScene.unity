@@ -658,7 +658,7 @@ PrefabInstance:
     - target: {fileID: 1933764349798619696, guid: 219e54894037f48e898c5b713a7c2f33,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1933764349798619696, guid: 219e54894037f48e898c5b713a7c2f33,
         type: 3}
@@ -730,7 +730,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: BasicMotionsDummyModel
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1933764349798619696, guid: 219e54894037f48e898c5b713a7c2f33, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 5105500384559216186, guid: 219e54894037f48e898c5b713a7c2f33,
@@ -865,7 +866,7 @@ MonoBehaviour:
   combo:
   - {fileID: 11400000, guid: 3b015dff98faa4b34b177a42765cd256, type: 2}
   - {fileID: 11400000, guid: 62b20c811b1b64b309f47f4d01ee370c, type: 2}
-  weapon: {fileID: 1026369063}
+  weapon: {fileID: 0}
 --- !u!114 &686696589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1321,7 +1322,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 157480125599297020, guid: 033929b60395748a4887f027f4de3b40,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1026369063}
+      addedObject: {fileID: 1026369065}
   m_SourcePrefab: {fileID: 100100000, guid: 033929b60395748a4887f027f4de3b40, type: 3}
 --- !u!4 &1026369060 stripped
 Transform:
@@ -1329,7 +1330,7 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1026369059}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1026369063
+--- !u!114 &1026369065
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

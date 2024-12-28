@@ -61,4 +61,13 @@ public class PlayerCombo : MonoBehaviour
         comboCounter = 0;
         lastComboEnd = Time.time;
     }
+     public void EnableTriggerBox()
+    {
+        weapon.EnableTriggerBox();
+    }
+
+    public void DisableTriggerBox()
+    {
+        weapon.DisableTriggerBox();
+    }
 }
