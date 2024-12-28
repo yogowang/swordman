@@ -10,7 +10,7 @@ public class PlayerCombo : MonoBehaviour
     int comboCounter;
 
     Animator anim;
-    [SerializeField] private  AttackArea attackArea;
+    [SerializeField] private  Weapon weapon;
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -36,7 +36,7 @@ public class PlayerCombo : MonoBehaviour
             {
                 anim.runtimeAnimatorController = combo[comboCounter].animatorOV;
                 anim.Play("Attack", 0, 0);
-                attackArea.SetDamage((int)combo[comboCounter].damage) ;
+                weapon.SetDamage((int)combo[comboCounter].damage) ;
                 comboCounter++;
                 lastClickedTime = Time.time;
 
