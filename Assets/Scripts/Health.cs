@@ -6,11 +6,20 @@ public class Health : MonoBehaviour
 {
     private int health;
     [SerializeField] private int maxHealth = 100;
-    [SerializeField] private HealthBar healthBar;
+     private HealthBar healthBar;
     // Update is called once per frame
     void Start(){
-        health=maxHealth;
-        healthBar.UpdateHealth((float)health/maxHealth);
+       healthBar = GetComponentInChildren<HealthBar>();
+
+    if (healthBar != null)
+    {
+        health = maxHealth;
+        healthBar.UpdateHealth((float)health / maxHealth);
+    }
+    else
+    {
+        Debug.LogError("No HealthBar component found on this or child objects!");
+    }
     }
     void Update()
     {
