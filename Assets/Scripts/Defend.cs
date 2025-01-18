@@ -5,15 +5,16 @@ using UnityEngine;
 public class Defend : MonoBehaviour
 {
     public DefendSO preDefend;
-    public DefendSO Defending;
     private Animator animator;  // Animator component to control animations
     private bool isDefend;
     private float holdingTime;
+    private  Weapon weapon;
     private
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();  // Get the Animator component attached to this GameObject
+        weapon= GetComponentInChildren<Weapon>();
         holdingTime=0.0f;
         isDefend=false;
     }
@@ -25,6 +26,7 @@ public class Defend : MonoBehaviour
         {
             if(isDefend==false){
                 holdingTime=Time.time;
+                EnableTriggerCapsule();
             }
             DefendAction();
         }
@@ -44,8 +46,18 @@ public class Defend : MonoBehaviour
         animator.Play("Defend",0,0.9f*animator.GetCurrentAnimatorClipInfo(0).Length);
     }
     private void EndDefend(){
+        DisableTriggerCapsule();
        isDefend=false;
        holdingTime=0.0f;
     }
-    
+     public void EnableTriggerCapsule()
+    {
+          weapon.EnableTriggerCapsule();         
+    }
+
+    public void DisableTriggerCapsule()
+    {
+        weapon.DisableTriggerCapsule();
+        
+    }
 }

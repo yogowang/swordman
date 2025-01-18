@@ -1078,7 +1078,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   preDefend: {fileID: 11400000, guid: 4732a252a1e074ed88f8ce1829aec99e, type: 2}
-  Defending: {fileID: 11400000, guid: 1d1d3ea11778640959dd25e484a2dfeb, type: 2}
 --- !u!1 &709359120
 GameObject:
   m_ObjectHideFlags: 0
@@ -1488,18 +1487,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 41.341995
       objectReference: {fileID: 0}
-    - target: {fileID: 6814856571358561855, guid: 033929b60395748a4887f027f4de3b40,
-        type: 3}
-      propertyPath: damage
-      value: 25
-      objectReference: {fileID: 0}
     - target: {fileID: 8421350787500848698, guid: 033929b60395748a4887f027f4de3b40,
         type: 3}
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 6814856571358561855, guid: 033929b60395748a4887f027f4de3b40, type: 3}
+    - {fileID: 0}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -2665,18 +2659,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 41.341995
       objectReference: {fileID: 0}
-    - target: {fileID: 6814856571358561855, guid: 033929b60395748a4887f027f4de3b40,
-        type: 3}
-      propertyPath: damage
-      value: 25
-      objectReference: {fileID: 0}
     - target: {fileID: 8421350787500848698, guid: 033929b60395748a4887f027f4de3b40,
         type: 3}
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 6814856571358561855, guid: 033929b60395748a4887f027f4de3b40, type: 3}
+    - {fileID: 0}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
