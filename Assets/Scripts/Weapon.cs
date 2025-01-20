@@ -18,12 +18,16 @@ public class Weapon : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Health health= other.GetComponentInParent<Health>();
+        // Attempt to get the CapsuleCollider from the collided object
+    CapsuleCollider otherCapsuleCollider = other.GetComponent<CapsuleCollider>();
+    
+     
+        Health health = other.GetComponentInParent<Health>();
         if (health != null)
         {
             health.Damage(damage);
-            
         }
+    
     }
 
     public void EnableTriggerBox()

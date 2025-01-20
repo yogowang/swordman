@@ -17,6 +17,7 @@ public class Defend : MonoBehaviour
         weapon= GetComponentInChildren<Weapon>();
         holdingTime=0.0f;
         isDefend=false;
+        DisableTriggerCapsule();
     }
 
     // Update is called once per frame
@@ -26,7 +27,6 @@ public class Defend : MonoBehaviour
         {
             if(isDefend==false){
                 holdingTime=Time.time;
-                EnableTriggerCapsule();
             }
             DefendAction();
         }
