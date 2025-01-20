@@ -10,10 +10,11 @@ public class PlayerCombo : MonoBehaviour
     int comboCounter;
 
     Animator anim;
-    [SerializeField] private  Weapon weapon;
+     private  Weapon weapon;
     void Start()
     {
         anim = GetComponent<Animator>();
+        weapon=GetComponentInChildren<Weapon>();
     }
 
     void Update()

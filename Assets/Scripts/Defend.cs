@@ -17,7 +17,6 @@ public class Defend : MonoBehaviour
         weapon= GetComponentInChildren<Weapon>();
         holdingTime=0.0f;
         isDefend=false;
-        DisableTriggerCapsule();
     }
 
     // Update is called once per frame
@@ -46,7 +45,6 @@ public class Defend : MonoBehaviour
         animator.Play("Defend",0,0.9f*animator.GetCurrentAnimatorClipInfo(0).Length);
     }
     private void EndDefend(){
-        DisableTriggerCapsule();
        isDefend=false;
        holdingTime=0.0f;
     }

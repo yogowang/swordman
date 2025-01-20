@@ -33,13 +33,13 @@ public class Weapon : MonoBehaviour
     public void EnableTriggerBox()
     {
         triggerBox.enabled = true;
-         Debug.Log(" triggerBox enabled");
+        // Debug.Log(" triggerBox enabled");
     }
 
     public void DisableTriggerBox()
     {
         triggerBox.enabled = false;
-        Debug.Log(" triggerBox disabled");
+        //Debug.Log(" triggerBox disabled");
     }
     public void EnableTriggerCapsule()
     {
