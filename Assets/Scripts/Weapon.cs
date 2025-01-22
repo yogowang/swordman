@@ -18,16 +18,24 @@ public class Weapon : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // Attempt to get the CapsuleCollider from the collided object
-    CapsuleCollider otherCapsuleCollider = other.GetComponent<CapsuleCollider>();
-    
-     
+        if (other.GetType() == typeof(CapsuleCollider))
+        {
+            if(other.enabled){
+                return;
+            }
+        }
+         if (other.GetType() == typeof(BoxCollider))
+       {
         Health health = other.GetComponentInParent<Health>();
         if (health != null)
         {
             health.Damage(damage);
         }
+       }
     
+    
+    
+        
     }
 
     public void EnableTriggerBox()
