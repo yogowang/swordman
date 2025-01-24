@@ -21,6 +21,8 @@ public class Weapon : MonoBehaviour
         if (other.GetType() == typeof(CapsuleCollider))
         {
             if(other.enabled){
+                damage=0;
+                Debug.Log(" blocked");
                 return;
             }
         }
