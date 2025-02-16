@@ -47,6 +47,7 @@ public class Defend : MonoBehaviour
     private void EndDefend(){
        isDefend=false;
        holdingTime=0.0f;
+       DisableTriggerCapsule();
     }
      public void EnableTriggerCapsule()
     {
