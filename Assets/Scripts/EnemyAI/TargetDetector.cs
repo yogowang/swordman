@@ -9,7 +9,7 @@ public class TargetDetector : MonoBehaviour
     }
 
     public Transform player; // Assign this in the Unity Editor
-    public float detectionRadius = 10f; // Detection radius
+    private float detectionRadius = 10f; // Detection radius
     public LayerMask playerLayer; // Layer mask to detect only player objects
 
     void Update()

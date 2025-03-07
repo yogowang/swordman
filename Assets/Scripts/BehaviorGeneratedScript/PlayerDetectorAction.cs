@@ -5,11 +5,10 @@ using Action = Unity.Behavior.Action;
 using Unity.Properties;
 
 [Serializable, GeneratePropertyBag]
-[NodeDescription(name: "DetectPlayer", story: "[Agent] attack [player] once it detects it", category: "Action", id: "0641f2c075c4a967eb8a92b5f97935ed")]
-public partial class DetectPlayerAction : Action
+[NodeDescription(name: "PlayerDetector", story: "Check if [detector] has a target", category: "Action", id: "72fb77371b7de9d9bdfba1a2bc0edeff")]
+public partial class PlayerDetectorAction : Action
 {
-    [SerializeReference] public BlackboardVariable<GameObject> Agent;
-    [SerializeReference] public BlackboardVariable<GameObject> Player;
+    [SerializeReference] public BlackboardVariable<TargetDetector> Detector;
 
     protected override Status OnStart()
     {
