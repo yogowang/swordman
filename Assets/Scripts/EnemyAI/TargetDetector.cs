@@ -5,25 +5,21 @@ public class TargetDetector : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        if(player==null){
+            player=GameObject.FindWithTag("Player");
+        }
+        distance=Vector3.Distance(transform.position,player.transform.position);
     }
 
-    public Transform player; // Assign this in the Unity Editor
+    public GameObject player; // Assign this in the Unity Editor
     private float detectionRadius = 10f; // Detection radius
-    public LayerMask playerLayer; // Layer mask to detect only player objects
+    private float distance=0f;
 
     void Update()
     {
-        DetectPlayer();
+        distance=Vector3.Distance(transform.position,player.transform.position);
     }
-
-    void DetectPlayer()
-    {
-        // Check for player within the detection radius
-        if (Vector3.Distance(transform.position, player.position) <= detectionRadius)
-        {
-            Debug.Log("Player detected");
-            // Additional logic for when the player is detected
-        }
+    public GameObject ifWithinDetectDistance(){
+        return distance>detectionRadius ? null : player;
     }
 }
