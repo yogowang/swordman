@@ -12,16 +12,9 @@ public partial class PlayerDetectorAction : Action
 
     protected override Status OnStart()
     {
-        return Status.Running;
+        return Detector.Value.ifWithinDetectDistance()==null? Status.Failure:Status.Success;
     }
 
-    protected override Status OnUpdate()
-    {
-        return Status.Success;
-    }
-
-    protected override void OnEnd()
-    {
-    }
+    
 }
 
