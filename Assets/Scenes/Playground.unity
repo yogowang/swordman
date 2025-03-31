@@ -225,6 +225,7 @@ MonoBehaviour:
   - rid: 4994699152945578223
   - rid: 4994699152945578224
   - rid: 307675799436656707
+  - rid: 307675958919036928
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
@@ -239,6 +240,15 @@ MonoBehaviour:
           m_Value1: 4977194235477217950
         Name: TargetDetector
         m_Value: {fileID: 117256879}
+    - rid: 307675958919036928
+      type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]',
+        ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 3005943426469529080
+          m_Value1: 2480255894677603966
+        Name: Target
+        m_Value: {fileID: 0}
     - rid: 4994699152945578223
       type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]',
         ns: Unity.Behavior, asm: Unity.Behavior}
@@ -272,6 +282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  detectionRadius: 1
 --- !u!1001 &177953244
 PrefabInstance:
   m_ObjectHideFlags: 0

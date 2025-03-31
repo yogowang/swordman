@@ -13,7 +13,7 @@ public class TargetDetector : MonoBehaviour
     }
 
     public GameObject player; // Assign this in the Unity Editor
-    private float detectionRadius = 100f; // Detection radius
+    public float detectionRadius = 5f; // Detection radius
     private float distance=0f;
 
     void Update()
