@@ -13,9 +13,20 @@ public partial class PlayerDetectorAction : Action
     protected override Status OnStart()
     {
         if(Detector.Value.ifWithinDetectDistance()){
-            //Target.Value=GameObject.FindWithTag("Player");
             Target.Value=Detector.Value.player;
-             if (Target.Value==null)
+            //Target.Value=GameObject.FindWithTag("Player");
+            if (Target.Value==null)
+            Debug.Log($"player is null");
+            return Status.Success;
+        }
+            return Status.Failure;
+        }
+        protected override Status OnUpdate()
+    {
+        if(Detector.Value.ifWithinDetectDistance()){
+            Target.Value=Detector.Value.player;
+            //Target.Value=GameObject.FindWithTag("Player");
+            if (Target.Value==null)
             Debug.Log($"player is null");
             return Status.Success;
         }

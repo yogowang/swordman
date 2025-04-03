@@ -54,13 +54,13 @@ public class Weapon : MonoBehaviour
     public void EnableTriggerCapsule()
     {
         capsuleCollider.enabled = true;
-         Debug.Log(" TriggerCapsule enabled");
+         //Debug.Log(" TriggerCapsule enabled");
     }
 
     public void DisableTriggerCapsule()
     {
         capsuleCollider.enabled = false;
-        Debug.Log(" TriggerCapsule disabled");
+        //Debug.Log(" TriggerCapsule disabled");
     }
 
     public void SetDamage(int newDamage)

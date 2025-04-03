@@ -13,7 +13,7 @@ public class TargetDetector : MonoBehaviour
     }
 
     public GameObject player; // Assign this in the Unity Editor
-    public float detectionRadius = 5f; // Detection radius
+    private float detectionRadius = 5f; // Detection radius
     private float distance=0f;
 
     void Update()
@@ -21,7 +21,7 @@ public class TargetDetector : MonoBehaviour
         if (player != null)
         {
             distance = Vector3.Distance(transform.position, player.transform.position);
-            //Debug.Log($"Distance to player: {distance}");
+            Debug.Log($"Distance to player: {distance}");
         }
     else
         {
@@ -29,6 +29,7 @@ public class TargetDetector : MonoBehaviour
         }
     }
     public Boolean ifWithinDetectDistance(){
-        return distance>detectionRadius ? false : true;
+        Debug.Log($"is player within the range? {distance<detectionRadius}");
+        return distance<detectionRadius;
     }
 }
