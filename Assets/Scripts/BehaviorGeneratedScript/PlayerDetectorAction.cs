@@ -10,17 +10,7 @@ public partial class PlayerDetectorAction : Action
 {
     [SerializeReference] public BlackboardVariable<TargetDetector> Detector;
     [SerializeReference] public BlackboardVariable<GameObject> Target;
-    protected override Status OnStart()
-    {
-        if(Detector.Value.ifWithinDetectDistance()){
-            Target.Value=Detector.Value.player;
-            //Target.Value=GameObject.FindWithTag("Player");
-            if (Target.Value==null)
-            Debug.Log($"player is null");
-            return Status.Success;
-        }
-            return Status.Failure;
-        }
+
         protected override Status OnUpdate()
     {
         if(Detector.Value.ifWithinDetectDistance()){
@@ -30,7 +20,10 @@ public partial class PlayerDetectorAction : Action
             Debug.Log($"player is null");
             return Status.Success;
         }
+        else{
+            Target.Value=null;
             return Status.Failure;
+            }
         }
     
 }
