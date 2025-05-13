@@ -3,6 +3,8 @@ using System.Collections;
 namespace BehaviorTree
 {
         public class Node{
+        
+        protected NodeState state;
         public enum NodeState{
         RUNNING,
         SUCCESS,
