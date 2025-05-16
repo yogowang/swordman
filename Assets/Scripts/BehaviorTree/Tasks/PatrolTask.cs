@@ -1,16 +1,24 @@
+using BehaviorTree;
 using UnityEngine;
 
-public class PatrolTask : MonoBehaviour
+public class PatrolTask : Node
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private Transform playerPos;
+    private Transform[] patrolPoints;
+    private int currentPatrolIndex = 0;
+    private float patrolSpeed = 2f;
+    private float waitTime = 1f;
+    private float waitTimer = 0f;
+    private bool isWaiting = false;
+    public PatrolTask(Transform playerPos, Transform[] patrolPoints) 
     {
-        
-    }
+        this.playerPos = playerPos;
+        this.patrolPoints = patrolPoints;
 
-    // Update is called once per frame
-    void Update()
+    }
+    public override NodeState Evaluate()
     {
         
+        return base.Evaluate();
     }
 }
