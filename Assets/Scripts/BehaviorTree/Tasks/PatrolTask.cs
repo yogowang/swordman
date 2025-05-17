@@ -18,7 +18,29 @@ public class PatrolTask : Node
     }
     public override NodeState Evaluate()
     {
-        
-        return base.Evaluate();
+        if (isWaiting)
+        {
+            waitTimer += Time.deltaTime;
+            if (waitTimer >= waitTime)
+                isWaiting = false;
+        }
+        else
+        {
+            Transform wp = patrolPoints[currentPatrolIndex];
+            if (Vector3.Distance(playerPos.position, wp.position) < 0.1f)
+            {
+                currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Length;
+                playerPos.position = wp.position;
+                isWaiting = true;
+                waitTimer = 0f;
+            }
+            else
+            {
+                playerPos.position = Vector3.MoveTowards(playerPos.position, wp.position, patrolSpeed * Time.deltaTime);
+                playerPos.LookAt(wp.position);
+            }
+        }
+        state = NodeState.RUNNING;
+        return state;
     }
 }
