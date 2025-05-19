@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 117256877}
   - component: {fileID: 117256876}
   - component: {fileID: 117256875}
-  - component: {fileID: 117256879}
+  - component: {fileID: 117256878}
   m_Layer: 0
   m_Name: FightDummy
   m_TagString: Untagged
@@ -206,7 +206,7 @@ Transform:
   - {fileID: 464192744}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &117256879
+--- !u!114 &117256878
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -215,10 +215,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 117256873}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb96ce47d0ca24d69bc73ddb4aea0637, type: 3}
+  m_Script: {fileID: 11500000, guid: d597033cd40690c4ab92fa8dfb80828c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  patrolPoints:
+  - {fileID: 1061292206}
+  - {fileID: 1343810872}
 --- !u!1001 &177953244
 PrefabInstance:
   m_ObjectHideFlags: 0
