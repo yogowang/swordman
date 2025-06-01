@@ -1,6 +1,6 @@
 
 using BehaviorTree;
-public class GuardBT : Tree
+public class GuardBT : TreeCustom
 {
     public UnityEngine.Transform[] patrolPoints;
     public static float speed = 2f;
