@@ -6,7 +6,7 @@ public class PatrolTask : Node
     private Transform dummyPos;
     private Transform[] patrolPoints;
     private int currentPatrolIndex = 0;
-    private float patrolSpeed = 2f;
+    private float patrolSpeed = 200f;
     private float waitTime = 1f;
     private float waitTimer = 0f;
     private bool isWaiting = false;
