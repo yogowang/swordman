@@ -147,7 +147,7 @@ Transform:
   m_GameObject: {fileID: 7057480}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.89, y: -3.23, z: -0.36}
+  m_LocalPosition: {x: 4.43, y: -3.58, z: -4.78}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -249,9 +249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d597033cd40690c4ab92fa8dfb80828c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrolPoints:
-  - {fileID: 1061292206}
-  - {fileID: 1343810872}
+  waypoints: {fileID: 234188977}
 --- !u!1001 &177953244
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -519,6 +517,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0cc6e8f16658434a964952e9027d1c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waypointSize: 1
 --- !u!1 &398024157
 GameObject:
   m_ObjectHideFlags: 0
@@ -1848,7 +1847,7 @@ Transform:
   m_GameObject: {fileID: 1061292205}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.56, z: -0}
+  m_LocalPosition: {x: 0, y: -3.37, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2232,7 +2231,7 @@ Transform:
   m_GameObject: {fileID: 1343810871}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.89, y: -3.24, z: -2.94}
+  m_LocalPosition: {x: 8.369, y: -3.58, z: -0.95}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3209,6 +3208,11 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 7ab977a21c92388468ee65ad1c0e5a78, type: 2}
+    - target: {fileID: 6433369295541324264, guid: 09aade0ecefd01e4b8f7661acf64f5c2,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.23
+      objectReference: {fileID: 0}
     - target: {fileID: 6448643974395219577, guid: 09aade0ecefd01e4b8f7661acf64f5c2,
         type: 3}
       propertyPath: 'm_Materials.Array.data[0]'

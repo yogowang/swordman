@@ -1,39 +1,43 @@
 using BehaviorTree;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public class PatrolTask : Node
 {
     private Transform dummyPos;
-    private Transform[] patrolPoints;
-    private int currentPatrolIndex = 0;
-    private float patrolSpeed = 200f;
+
+    private Waypoints waypoints;
+    private Transform currentWaypoint=null;
+
+    private float patrolSpeed = 20f;
     private float waitTime = 1f;
     private float waitTimer = 0f;
     private bool isWaiting = false;
     private Animator animator;
     private Rigidbody rb;
-    public PatrolTask(Transform dummyPos, Transform[] patrolPoints)
+    public PatrolTask(Transform dummyPos, Waypoints waypoints)
     {
         this.dummyPos = dummyPos;
-        this.patrolPoints = patrolPoints;
+        this.waypoints = waypoints;
         animator = dummyPos.GetComponent<Animator>();
         rb = dummyPos.GetComponent<Rigidbody>();
+        currentWaypoint = waypoints.NextWaypoint(currentWaypoint);
 
     }
     public override NodeState Evaluate()
     {
         if (isWaiting)
         {
+            currentWaypoint = waypoints.NextWaypoint(currentWaypoint);
             waitTimer += Time.deltaTime;
             if (waitTimer >= waitTime)
                 isWaiting = false;
         }
         else
         {
-            Transform wp = patrolPoints[currentPatrolIndex];
-            if (Vector3.Distance(dummyPos.position, wp.position) < 0.1f)
+            if (Vector3.Distance(dummyPos.position, currentWaypoint.position) < 0.5f)
             {
-                currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Length;
+                //currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Length;
                 //dummyPos.position = wp.position;
                 animator.SetFloat("Speed", 0f); // Stop animation when waiting
                 isWaiting = true;
@@ -42,8 +46,8 @@ public class PatrolTask : Node
             else
             {
                 animator.SetFloat("Speed", patrolSpeed); // Set animation speed
-                Vector3 newPosition = Vector3.MoveTowards(dummyPos.position, wp.position, patrolSpeed * Time.deltaTime);
-                dummyPos.LookAt(wp.position);
+                Vector3 newPosition = Vector3.MoveTowards(dummyPos.position, currentWaypoint.position, patrolSpeed * Time.deltaTime);
+                dummyPos.LookAt(currentWaypoint.position);
                 rb.MovePosition(newPosition); // Move the dummy position
             }
         }
