@@ -24,8 +24,10 @@ public class Waypoints : MonoBehaviour
         {
             return transform.GetChild(0);
         }
-        return currentWaypoint.GetSiblingIndex() < transform.childCount - 1 ? 
-               transform.GetChild(currentWaypoint.GetSiblingIndex() + 1) : 
-               null;
+        return transform.GetChild(currentWaypoint.GetSiblingIndex() + 1);
+        /**
+        return currentWaypoint.GetSiblingIndex() < transform.childCount - 1 ?
+               transform.GetChild(currentWaypoint.GetSiblingIndex() + 1) :
+               null;**/
     }
 }

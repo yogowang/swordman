@@ -5,6 +5,7 @@ using UnityEngine;
 public class PatrolTask : Node
 {
     private Transform dummyPos;
+    [SerializeField]private float stopDistance = 1f;
 
     private Waypoints waypoints;
     private Transform currentWaypoint=null;
@@ -35,7 +36,7 @@ public class PatrolTask : Node
         }
         else
         {
-            if (Vector3.Distance(dummyPos.position, currentWaypoint.position) < 0.5f)
+            if (Vector3.Distance(dummyPos.position, currentWaypoint.position) < stopDistance)
             {
                 //currentPatrolIndex = (currentPatrolIndex + 1) % patrolPoints.Length;
                 //dummyPos.position = wp.position;

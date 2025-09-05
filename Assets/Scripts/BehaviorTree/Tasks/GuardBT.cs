@@ -7,6 +7,7 @@ public class GuardBT : TreeCustom
     public static float speed = 2f;
     protected override Node SetupTree()
     {
+        transform.position=waypoints.NextWaypoint(null).position;
         Node root = new PatrolTask(transform, waypoints);
         return root;
     }
