@@ -24,10 +24,11 @@ public class Waypoints : MonoBehaviour
         {
             return transform.GetChild(0);
         }
-        return transform.GetChild(currentWaypoint.GetSiblingIndex() + 1);
-        /**
-        return currentWaypoint.GetSiblingIndex() < transform.childCount - 1 ?
+         //Debug.Log("Sibling Index : " + currentWaypoint.GetSiblingIndex());
+        //return transform.GetChild(currentWaypoint.GetSiblingIndex()+1 );
+        
+        return currentWaypoint.GetSiblingIndex() < transform.childCount -1 ?
                transform.GetChild(currentWaypoint.GetSiblingIndex() + 1) :
-               null;**/
+               null;
     }
 }

@@ -29,10 +29,13 @@ public class PatrolTask : Node
     {
         if (isWaiting)
         {
-            currentWaypoint = waypoints.NextWaypoint(currentWaypoint);
+            
             waitTimer += Time.deltaTime;
             if (waitTimer >= waitTime)
+            {
+                currentWaypoint = waypoints.NextWaypoint(currentWaypoint);
                 isWaiting = false;
+            }
         }
         else
         {
