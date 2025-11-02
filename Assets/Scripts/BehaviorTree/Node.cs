@@ -13,18 +13,26 @@ namespace BehaviorTree
         private Dictionary<string,object> _dataContext = new Dictionary<string, object>();
 
         protected Node parent;
-        protected List<Node> children;
+        protected List<Node> children = new List<Node>();
         public Node()
         {
             parent=null;
         }
         public Node(List<Node> children){
+            if (children == null)
+            {
+                return;
+            }
             foreach (Node child in children)
             {
                 _Attach(child);
             }
         }
         private void _Attach(Node node){
+            if (node == null)
+            {
+                return;
+            }
             node.parent=this;
             children.Add(node);
         }

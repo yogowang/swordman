@@ -165,6 +165,7 @@ GameObject:
   - component: {fileID: 117256876}
   - component: {fileID: 117256875}
   - component: {fileID: 117256878}
+  - component: {fileID: 117256879}
   m_Layer: 0
   m_Name: FightDummy
   m_TagString: Untagged
@@ -250,6 +251,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waypoints: {fileID: 234188977}
+  detectionRadius: 5
+  attackDamage: 10
+  rotationSpeedWhileAttacking: 10
+--- !u!114 &117256879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 117256873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5aecacdb26b0b3f40a53c47e71bfe766, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &177953244
 PrefabInstance:
   m_ObjectHideFlags: 0
