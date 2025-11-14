@@ -1,4 +1,5 @@
 using BehaviorTree;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class AttackTask : Node
@@ -8,17 +9,20 @@ public class AttackTask : Node
     private readonly Animator animator;
     private readonly Weapon weapon;
     private readonly Rigidbody rb;
+    float lastComboEnd;
+    int comboCounter;
+
+    [SerializeField] private List<AttackSO> combo; 
 
     private readonly float detectionRadius;
-    private readonly int attackDamage;
+    
     private readonly float rotationSpeed;
 
-    public AttackTask(Transform npcTransform, Transform playerTransform, float detectionRadius, int attackDamage = 10, float rotationSpeed = 10f)
+    public AttackTask(Transform npcTransform, Transform playerTransform, float detectionRadius,  float rotationSpeed = 10f)
     {
         this.npcTransform = npcTransform;
         this.playerTransform = playerTransform;
         this.detectionRadius = detectionRadius;
-        this.attackDamage = attackDamage;
         this.rotationSpeed = rotationSpeed;
 
         animator = npcTransform.GetComponent<Animator>();
@@ -68,14 +72,10 @@ public class AttackTask : Node
             animator.SetFloat("Speed", 0f);
             if (!animator.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))
             {
-                animator.Play("Attack", 0, 0f);
+              animator.Play("Attack", 0, 0);
             }
         }
 
-        if (weapon != null)
-        {
-            weapon.SetDamage(attackDamage);
-        }
 
         state = NodeState.RUNNING;
         return state;

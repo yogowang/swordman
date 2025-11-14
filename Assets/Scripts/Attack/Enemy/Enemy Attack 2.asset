@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf15d497524764eaebadbb3dae826c87, type: 3}
   m_Name: Enemy Attack 2
   m_EditorClassIdentifier: 
-  animatorOV: {fileID: 0}
-  damage: 0
+  animatorOV: {fileID: 22100000, guid: d9e80960437330b419eb646847ebfa80, type: 2}
+  damage: 10

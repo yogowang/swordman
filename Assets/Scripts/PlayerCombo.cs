@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerCombo : MonoBehaviour
 {
-    public List<AttackSO> combo;  // List of attack scriptable objects
+    [SerializeField] private List<AttackSO> combo;  // List of attack scriptable objects
     float lastClickedTime;
     float lastComboEnd;
     int comboCounter;
@@ -14,7 +14,8 @@ public class PlayerCombo : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-        weapon=GetComponentInChildren<Weapon>();
+        weapon = GetComponentInChildren<Weapon>();
+        lastClickedTime=Time.time;
     }
 
     void Update()

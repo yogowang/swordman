@@ -6,7 +6,6 @@ public class GuardBT : TreeCustom
 {
     [SerializeField] private Waypoints waypoints;
     [SerializeField] private float detectionRadius = 5f;
-    [SerializeField] private int attackDamage = 10;
     [SerializeField] private float rotationSpeedWhileAttacking = 10f;
 
     protected override Node SetupTree()
@@ -18,7 +17,7 @@ public class GuardBT : TreeCustom
 
         Transform playerTransform = GameObject.FindWithTag("Player")?.transform;
 
-        Node attackNode = new AttackTask(transform, playerTransform, detectionRadius, attackDamage, rotationSpeedWhileAttacking);
+        Node attackNode = new AttackTask(transform, playerTransform, detectionRadius, rotationSpeedWhileAttacking);
         Node patrolNode = new PatrolTask(transform, waypoints);
 
         Node root = new Selector(new List<Node>
