@@ -9,75 +9,201 @@ public class AttackTask : Node
     private readonly Animator animator;
     private readonly Weapon weapon;
     private readonly Rigidbody rb;
-    float lastComboEnd;
-    int comboCounter;
-
-    [SerializeField] private List<AttackSO> combo; 
 
     private readonly float detectionRadius;
-    
     private readonly float rotationSpeed;
+    private readonly float attackRange;
+    private readonly float moveSpeed;
+    private readonly float comboInterval;
+    private readonly float comboResetDelay;
+    private readonly IReadOnlyList<AttackSO> combo;
 
-    public AttackTask(Transform npcTransform, Transform playerTransform, float detectionRadius,  float rotationSpeed = 10f)
+    private float lastComboTriggerTime;
+    private float lastComboEndTime;
+    private int comboIndex;
+
+    public AttackTask(
+        Transform npcTransform,
+        Transform playerTransform,
+        float detectionRadius,
+        float rotationSpeed,
+        float attackRange,
+        float moveSpeed,
+        float comboInterval,
+        float comboResetDelay,
+        IReadOnlyList<AttackSO> combo)
     {
         this.npcTransform = npcTransform;
         this.playerTransform = playerTransform;
-        this.detectionRadius = detectionRadius;
+        this.detectionRadius = Mathf.Max(0f, detectionRadius);
         this.rotationSpeed = rotationSpeed;
+        this.attackRange = Mathf.Max(0.1f, attackRange);
+        this.moveSpeed = Mathf.Max(0f, moveSpeed);
+        this.comboInterval = Mathf.Max(0f, comboInterval);
+        this.comboResetDelay = Mathf.Max(0f, comboResetDelay);
+        this.combo = combo;
 
         animator = npcTransform.GetComponent<Animator>();
         weapon = npcTransform.GetComponentInChildren<Weapon>();
         rb = npcTransform.GetComponent<Rigidbody>();
 
-        if (this.playerTransform == null)
-        {
-            GameObject playerObject = GameObject.FindWithTag("Player");
-            if (playerObject != null)
-            {
-                this.playerTransform = playerObject.transform;
-            }
-        }
+        CachePlayerIfMissing();
     }
 
     public override NodeState Evaluate()
     {
+        CachePlayerIfMissing();
         if (playerTransform == null)
         {
             state = NodeState.FAILURE;
             return state;
         }
 
-        float sqrDistance = (npcTransform.position - playerTransform.position).sqrMagnitude;
-        if (sqrDistance > detectionRadius * detectionRadius)
+        float distance = Vector3.Distance(npcTransform.position, playerTransform.position);
+        if (distance > detectionRadius)
         {
             state = NodeState.FAILURE;
             return state;
+        }
+
+        FacePlayer();
+
+        if (distance > attackRange)
+        {
+            MoveTowardsPlayer();
+            state = NodeState.RUNNING;
+            return state;
+        }
+
+        StopMovement();
+        HandleComboAttacks();
+        state = NodeState.RUNNING;
+        return state;
+    }
+
+    private void CachePlayerIfMissing()
+    {
+        if (playerTransform != null)
+        {
+            return;
+        }
+
+        GameObject playerObject = GameObject.FindWithTag("Player");
+        if (playerObject != null)
+        {
+            playerTransform = playerObject.transform;
+        }
+    }
+
+    private void FacePlayer()
+    {
+        if (playerTransform == null)
+        {
+            return;
+        }
+
+        Vector3 direction = playerTransform.position - npcTransform.position;
+        direction.y = 0f;
+        if (direction.sqrMagnitude <= Mathf.Epsilon)
+        {
+            return;
+        }
+
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+        npcTransform.rotation = Quaternion.Slerp(npcTransform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+    }
+
+    private void MoveTowardsPlayer()
+    {
+        if (animator != null)
+        {
+            animator.SetFloat("Speed", moveSpeed);
+        }
+
+        if (playerTransform == null)
+        {
+            return;
+        }
+
+        Vector3 newPosition = Vector3.MoveTowards(npcTransform.position, playerTransform.position, moveSpeed * Time.deltaTime);
+        if (rb != null)
+        {
+            rb.MovePosition(newPosition);
+        }
+        else
+        {
+            npcTransform.position = newPosition;
+        }
+    }
+
+    private void StopMovement()
+    {
+        if (animator != null)
+        {
+            animator.SetFloat("Speed", 0f);
         }
 
         if (rb != null)
         {
             rb.linearVelocity = Vector3.zero;
         }
+    }
 
-        Vector3 direction = playerTransform.position - npcTransform.position;
-        direction.y = 0f;
-        if (direction.sqrMagnitude > Mathf.Epsilon)
+    private void HandleComboAttacks()
+    {
+        if (animator == null)
         {
-            Quaternion targetRotation = Quaternion.LookRotation(direction);
-            npcTransform.rotation = Quaternion.Slerp(npcTransform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+            return;
         }
 
-        if (animator != null)
+        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        if (stateInfo.IsTag("Attack"))
         {
-            animator.SetFloat("Speed", 0f);
-            if (!animator.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))
+            if (stateInfo.normalizedTime >= 0.98f)
             {
-              animator.Play("Attack", 0, 0);
+                lastComboEndTime = Time.time;
             }
+            return;
         }
 
+        if (combo == null || combo.Count == 0)
+        {
+            animator.Play("Attack", 0, 0f);
+            return;
+        }
 
-        state = NodeState.RUNNING;
-        return state;
+        if (Time.time - lastComboEndTime > comboResetDelay)
+        {
+            comboIndex = 0;
+        }
+
+        if (Time.time - lastComboTriggerTime < comboInterval)
+        {
+            return;
+        }
+
+        TriggerComboStrike(combo[comboIndex]);
+        comboIndex = (comboIndex + 1) % combo.Count;
+        lastComboTriggerTime = Time.time;
+    }
+
+    private void TriggerComboStrike(AttackSO attackData)
+    {
+        if (animator == null)
+        {
+            return;
+        }
+
+        if (attackData != null && attackData.animatorOV != null)
+        {
+            animator.runtimeAnimatorController = attackData.animatorOV;
+        }
+
+        animator.Play("Attack", 0, 0f);
+
+        if (weapon != null && attackData != null)
+        {
+            weapon.SetDamage(Mathf.RoundToInt(attackData.damage));
+        }
     }
 }

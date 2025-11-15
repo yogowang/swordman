@@ -252,8 +252,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waypoints: {fileID: 234188977}
   detectionRadius: 5
-  attackDamage: 10
   rotationSpeedWhileAttacking: 10
+  attackRange: 1.5
+  chaseSpeed: 4
+  comboInterval: 0.3
+  comboResetDelay: 1
+  comboSequence:
+  - {fileID: 11400000, guid: 0cc04295a5ef2a54ea34e19dad680e95, type: 2}
+  - {fileID: 11400000, guid: 2f60b62f9acdf3d49af74b60d22442a7, type: 2}
 --- !u!114 &117256879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1173,7 +1179,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 828062066}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.20701751, y: -0, z: -0, w: 0.9783372}
+  m_LocalRotation: {x: 0.20701751, y: -0, z: -0, w: 0.9783373}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
