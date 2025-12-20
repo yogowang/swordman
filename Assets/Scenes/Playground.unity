@@ -251,15 +251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waypoints: {fileID: 234188977}
-  detectionRadius: 5
-  rotationSpeedWhileAttacking: 10
-  attackRange: 1.5
-  chaseSpeed: 4
-  comboInterval: 0.3
-  comboResetDelay: 1
-  comboSequence:
-  - {fileID: 11400000, guid: 0cc04295a5ef2a54ea34e19dad680e95, type: 2}
-  - {fileID: 11400000, guid: 2f60b62f9acdf3d49af74b60d22442a7, type: 2}
+  template: {fileID: 11400000, guid: 9bd94e0c5d2831f4d83adc3302e52c76, type: 2}
 --- !u!114 &117256879
 MonoBehaviour:
   m_ObjectHideFlags: 0

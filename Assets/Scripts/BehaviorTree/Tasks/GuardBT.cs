@@ -5,13 +5,7 @@ using UnityEngine;
 public class GuardBT : TreeCustom
 {
     [SerializeField] private Waypoints waypoints;
-    [SerializeField] private float detectionRadius = 5f;
-    [SerializeField] private float rotationSpeedWhileAttacking = 10f;
-    [SerializeField] private float attackRange = 1.5f;
-    [SerializeField] private float chaseSpeed = 4f;
-    [SerializeField] private float comboInterval = 0.3f;
-    [SerializeField] private float comboResetDelay = 1f;
-    [SerializeField] private List<AttackSO> comboSequence = new List<AttackSO>();
+    [SerializeField] private EnemyTemplateSO template;
 
     protected override Node SetupTree()
     {
@@ -21,6 +15,14 @@ public class GuardBT : TreeCustom
         }
 
         Transform playerTransform = GameObject.FindWithTag("Player")?.transform;
+
+        float detectionRadius = template != null ? template.detectionRadius : 5f;
+        float rotationSpeedWhileAttacking = template != null ? template.rotationSpeedWhileAttacking : 10f;
+        float attackRange = template != null ? template.attackRange : 1.5f;
+        float chaseSpeed = template != null ? template.chaseSpeed : 4f;
+        float comboInterval = template != null ? template.comboInterval : 0.3f;
+        float comboResetDelay = template != null ? template.comboResetDelay : 1f;
+        List<AttackSO> comboSequence = template != null ? template.comboSequence : null;
 
         Node attackNode = new AttackTask(
             transform,
